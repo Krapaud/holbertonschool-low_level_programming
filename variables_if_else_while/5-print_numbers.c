@@ -2,7 +2,7 @@
 /**
  * main - Entry point
  *
- * Description: Print alphabet in lowercase
+ * Description: Print all single digit number base 10
  *
  * Return: Always 0 (Success)
  */

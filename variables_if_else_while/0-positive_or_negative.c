@@ -3,6 +3,11 @@
 /* more headers goes there */
 
 /* betty style doc for function main goes there */
+/**
+* main - Entry point
+* Assign random number
+* Return: Always 0 (Success)
+*/
 int main(void)
 {
 int n;
@@ -23,6 +28,5 @@ else
 {
 printf("is negative\n");
 }
-
 return (0);
 }

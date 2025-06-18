@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 /**
-* print_alphabet - Prints the lowercase alphabet x 10
+* print_alphabet_x10 - Prints the lowercase alphabet x 10
 *
 * Description: Uses _putchar to print each letter from a to z
 * on 10 lines

@@ -1,0 +1,8 @@
+BasedOnStyle: GNU
+IndentWidth: 4
+UseTab: Never
+ColumnLimit: 80
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: true

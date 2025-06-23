@@ -2,12 +2,13 @@
 #include <stdio.h>
 
 void
-print_triangle (int size)
+print_triangle(int size)
 
 {
 	int i, j, k;
 
-	if (size <= 0) {
+	if (size <= 0)
+	{
 		_putchar ('\n');
 		return;
 	}

@@ -2,14 +2,14 @@
 #include <stdio.h>
 /**
  * main - prints the numbers from 1 to 100, but for mul
- *        prints "Fizz" instead of the number and for 
+ *        prints "Fizz" instead of the number and for
  *        prints "Buzz". For numbers which
  *        prints "FizzBuzz".
  *
  * Return: Always 0.
  */
-int
-main (void) {
+int main(void)
+{
 	int i;
 
 	for (i = 1; i <= 100; i++)

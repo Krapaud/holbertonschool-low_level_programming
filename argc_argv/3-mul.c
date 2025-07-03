@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(int argc, int *argv[])
+int main(int argc, char *argv[])
 {
 	int i;
 	int j;
@@ -8,13 +9,13 @@ int main(int argc, int *argv[])
 
 	if (argc != 3)
 	{
-		printf("Error'\n");
+		printf("Error\n");
 	return (1);
 	}
-	i = argv[1];
-	j = argv[2];
+	i = atoi(argv[1]);
+	j = atoi(argv[2]);
 	result = i * j;
 
-	printf('%d\n', result);
+	printf("%d\n", result);
 	return(0);
 }

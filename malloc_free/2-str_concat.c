@@ -9,6 +9,7 @@
  * Return: pointer to the newly allocated space
  * in memory containing the concatenated string,
  * or NULL if insufficient memory was available.
+ * @n: the number of bytes to concatenate from s2
  */
 char *str_concat(char *s1, char *s2)
 {

@@ -30,7 +30,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	strcpy(name_copy, name);
 
 	owner_copy = malloc(strlen(owner) + 1);
-	if (owner_copy == NULL)
+	if (owner == NULL)
 	{
 		free(name_copy);
 		free(dt);

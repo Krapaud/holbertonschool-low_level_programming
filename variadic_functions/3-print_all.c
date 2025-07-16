@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
+ * print_char - prints a character
+ * @args: the list of arguments
+ *
+ * Return: nothing
+ */
+/**
  * print_all - prints anything
  * @format: a list of types of arguments passed to the function
  *

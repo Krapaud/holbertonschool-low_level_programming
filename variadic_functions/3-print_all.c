@@ -8,12 +8,6 @@
  *
  * Return: nothing
  */
-/**
- * print_all - prints anything
- * @format: a list of types of arguments passed to the function
- *
- * Return: nothing
- */
 
 void print_char(va_list args)
 {

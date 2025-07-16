@@ -4,9 +4,10 @@
 #include <stdarg.h>
 
 /**
- * struct print - Structure for printing different types
- * @c: Character string
- * @f: Function pointer to print function
+ * struct print - Struct to hold a character
+ * and its corresponding print function
+ * @c: Character representing the type
+ * @f: Function pointer to the print function
  */
 typedef struct print
 {

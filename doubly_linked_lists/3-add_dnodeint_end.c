@@ -3,10 +3,9 @@
 #include <stddef.h>
 #include <stdlib.h>
 /**
- * add_node_end - adds a new node at the end of a dlistint_t list
+ * add_dnodeint_end - adds a new node at the end of a dlistint_t list
  * @head: double pointer to the head of the list
- * @str: string to be added to the new node
- *
+ * @n: integer to be added to the new node
  * Return: address of the new element, or NULL if it failed
  */
 
@@ -19,7 +18,10 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 
 		new_node = malloc(sizeof(dlistint_t));
 		if (new_node == NULL)
+		{
+			free(new_node);
 			return (NULL);
+		}
 
 		new_node->next = NULL;
 

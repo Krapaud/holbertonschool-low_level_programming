@@ -1,45 +1,65 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include <string.h>
 /**
- * main - Copies the contents of one file to another.
- * @void: No parameters.
- * Return: 0 on success, exits with error code on failure.
+ * cpy - copies the contents of one file to another
+ * @src: source file pointer
+ * @dest: destination file pointer
  */
-
-int main(void)
+void cpy(FILE *src, FILE *dest)
 {
-	FILE *fptr1, *fptr2;
-	char filename[100];
-	int c;
+	char buf[BUFSIZ];
+	size_t n;
 
-	printf("Enter the filename to open for reading: ");
-	scanf("%s", filename);
-
-	fptr1 = fopen(filename, "r");
-	if (fptr1 == NULL)
+	while ((n = fread(buf, 1, sizeof(buf), src)) > 0)
 	{
-		printf("Cannot open file %s\n", filename);
-		exit(1);
+		if (fwrite(buf, 1, n, dest) != n)
+		{
+			fprintf(stderr, "write error\n");
+			exit(4);
+		}
 	}
 
-	printf("Enter the filename to open for writing: ");
-	scanf("%s", filename);
-
-	fptr2 = fopen(filename, "w");
-	if (fptr2 == NULL)
+	if (ferror(src))
 	{
-		printf("Cannot open file %s\n", filename);
-		exit(1);
+		fprintf(stderr, "read error\n");
+		exit(5);
 	}
-	while ((c = fgetc(fptr1)) != EOF)
+}
+/**
+ * * main - copies a file
+ * * @argc: argument count
+ * * @argv: argument vector
+ * * Return: 0 on success, non-zero on error
+ */
+int main(int argc, char **argv)
+{
+	FILE *src, *dest;
+
+	if (argc != 3)
 	{
-		fputc(c, fptr2);
+		fprintf(stderr, "usage: cpy src dest\n");
+		return (1);
 	}
 
-	printf("Contents copied to %s\n", filename);
+	src = fopen(argv[1], "rb");
 
-	fclose(fptr1);
-	fclose(fptr2);
+	if (src == NULL)
+	{
+		fprintf(stderr, "cannot open %s for reading\n", argv[1]);
+		return (2);
+	}
+
+	dest = fopen(argv[2], "wb");
+	if (dest == NULL)
+	{
+		fprintf(stderr, "cannot open %s for writing\n", argv[2]);
+		fclose(src);
+		return (3);
+	}
+	cpy(src, dest);
+	fclose(src);
+	fclose(dest);
+
 	return (0);
 }

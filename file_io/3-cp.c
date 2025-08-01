@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+/**
+ * main - Copies the contents of one file to another.
+ * @void: No parameters.
+ * Return: 0 on success, exits with error code on failure.
+ */
 
-int main()
+int main(void)
 {
 	FILE *fptr1, *fptr2;
 	char filename[100];

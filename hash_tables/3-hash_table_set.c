@@ -1,7 +1,7 @@
 #include "hash_tables.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 /**
  * hash_table_set - Adds an element to the hash table.
  * @ht: The hash table to add or update the key/value pair.
@@ -14,32 +14,46 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int idx;
-	char *str;
-	hash_node_t *node;
+	hash_node_t *node, *new;
+	char *val_cpy, *key_cpy;
 
-	if (!ht || !key)
+	if (!ht || !key || key[0] == '\0')
 		return (0);
 
-	idx = key_index((unsigned char *)key, ht->size);
-	if (value)
-		str = strdup(value);
-	else
-		str = NULL;
-
+	idx = key_index((const unsigned char *)key, ht->size);
 	node = ht->array[idx];
 
-	if (!node)
-		node = new_node(NULL);
-
-	if (node->key)
+	while (node)
 	{
-		ht->array[idx] = update_node(node, key, str);
-		return (1);
+		if (strcmp(node->key, key) == 0)
+		{
+			free(node->value);
+			node->value = value ? strdup(value) : NULL;
+			return (1);
+		}
+		node = node->next;
 	}
-	node->key = strdup(key);
-	node->value = str;
-	node->next = NULL;
 
-	ht->array[idx] = node;
+	key_cpy = strdup(key);
+	val_cpy = value ? strdup(value) : NULL;
+	if (!key_cpy || (value && !val_cpy))
+	{
+		free(key_cpy);
+		free(val_cpy);
+		return (0);
+	}
+
+	new = malloc (sizeof (hash_node_t));
+	if (!new)
+	{
+		free(key_cpy);
+		free(val_cpy);
+		return (0);
+	}
+	new->key = key_cpy;
+	new->value = val_cpy;
+	new->next = ht->array[idx];
+	ht->array[idx] = new;
+
 	return (1);
 }
